@@ -1,16 +1,22 @@
 import { useState } from "react";
 import { createMagicLink } from "../appwrite";
+import { v4 as uuidv4 } from "uuid";
 
 export function Login() {
   const [emailInput, setEmailInput] = useState("");
+  const [message, setMessage] = useState("");
   const sendEmail = (email: string) => {
+    const $id = uuidv4();
     try {
-      const id = "123456";
-      createMagicLink(id, email);
+      createMagicLink($id, email);
+
       setEmailInput("");
-      console.log("Enviado Correctamente");
+      setMessage("Enviado Correctamente");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
     } catch (error) {
-      console.log("Error al enviar, Intenta nuevamente");
+      setMessage("Error al enviar, Intenta nuevamente");
     }
   };
   return (
@@ -35,6 +41,7 @@ export function Login() {
       >
         Enviame el Link!
       </button>
+      <p>{message}</p>
     </div>
   );
 }
