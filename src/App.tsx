@@ -25,7 +25,17 @@ function App() {
     () => things.filter((t) => t.nombre.includes(q)),
     [q]
   );
-
+  setThings([
+    {
+      nombre: "Olla a presion",
+    },
+    {
+      nombre: "Cuchara de palo",
+    },
+    {
+      nombre: "Cuchara de sopa",
+    },
+  ]);
   return (
     <div>
       <input type="text" value={q} onChange={(e) => setQ(e.target.value)} />
