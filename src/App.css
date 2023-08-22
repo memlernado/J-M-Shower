@@ -4,6 +4,35 @@
   padding: 2rem;
   text-align: center;
 }
+#itemsPage {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+  flex-direction: column;
+}
+input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#inputsField {
+  display: flex;
+  flex-direction: row;
+  max-width: 20%;
+}
+
+#newItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 10%;
+  margin: 2%;
+  padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
 .logo {
   height: 6em;
@@ -11,9 +40,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +53,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
