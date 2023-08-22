@@ -1,8 +1,8 @@
 import "./App.css";
-import { Item } from "./components/item";
+import { Items } from "./components/Items";
 
 function App() {
-  return <Item />;
+  return <Items />;
 }
 
 export default App;

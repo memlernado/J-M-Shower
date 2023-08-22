@@ -4,7 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-#itemsPage {
+.itemsPage {
   display: flex;
   flex-direction: column;
 }
@@ -18,13 +18,13 @@ input {
   margin-left: 10px;
   margin-right: 10px;
 }
-#inputsField {
+.inputsField {
   display: flex;
   flex-direction: row;
   max-width: 20%;
 }
 
-#newItem {
+.newItem {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
