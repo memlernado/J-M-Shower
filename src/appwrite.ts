@@ -17,6 +17,7 @@ export const createMagicLink = async (id: string, email: string) => {
       email,
       "http://localhost:5173/App"
     );
+    return a;
   } catch (error) {
     console.log(error);
   }
