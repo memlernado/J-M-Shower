@@ -7,6 +7,24 @@
 .itemsPage {
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 25px;
+  border-radius: 10px;
+}
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 4px;
+  letter-spacing: 1px;
+  font-family: fangsong;
+  padding: 5px;
+}
+.title h1:after,
+.title h1:before {
+  content: " ";
+  display: block;
+  border-bottom: 2px solid #ccc;
+  background-color: #f8f8f8;
 }
 
 ul {
@@ -14,9 +32,13 @@ ul {
   padding-inline-start: 0px;
   flex-direction: column;
 }
+li {
+  font-family: fangsong;
+}
 input {
   margin-left: 10px;
   margin-right: 10px;
+  border-radius: -1px;
 }
 .inputsField {
   display: flex;
@@ -32,4 +54,9 @@ input {
   margin: 2%;
   padding: 8px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.checked {
+  background-color: gray;
+}
+.notChecked {
 }

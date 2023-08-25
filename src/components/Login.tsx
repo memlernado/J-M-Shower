@@ -8,10 +8,10 @@ export function Login() {
   const sendEmail = (email: string) => {
     const $id = uuidv4();
     try {
-      createMagicLink($id, email);
-
+      createMagicLink($id, email).then(() => {
+        setMessage("Enviado Correctamente");
+      });
       setEmailInput("");
-      setMessage("Enviado Correctamente");
       setTimeout(() => {
         setMessage("");
       }, 2000);
