@@ -1,6 +1,5 @@
 import { Client, Account, Databases } from "appwrite";
 import { IItemsService, TItem, TItemDocument } from "./types";
-
 const client = new Client();
 const account = new Account(client);
 const db = new Databases(client);
@@ -12,12 +11,11 @@ client
 
 export const createMagicLink = async (id: string, email: string) => {
   try {
-    const a = await account.createMagicURLSession(
+    await account.createMagicURLSession(
       id,
       email,
-      "http://localhost:5173/App"
+      import.meta.env.MAGIC_LINK_URL
     );
-    return a;
   } catch (error) {
     console.log(error);
   }

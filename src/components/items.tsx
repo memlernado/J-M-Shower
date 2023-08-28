@@ -22,25 +22,44 @@ export function Items() {
     };
     setThings((prev) => [...prev, { $id, ...newItem }]);
 
-    itemsServices.newItem($id, newItem);
-    setInput("");
+    try {
+      itemsServices.newItem($id, newItem);
+      setInput("");
+    } catch (e) {
+      const newArray = things.filter((i) => i.$id !== $id);
+      setThings(newArray);
+      console.log("Error, Intenta de nuevo", e);
+    }
   };
   const updateItem = (t: Partial<TItemDocument>) => {
     t.isSelected = !t.isSelected!;
-    const newArray = things.filter((i) => i.$id !== t.$id);
-    const index = things.findIndex((i) => i.$id === t.$id);
-    newArray.splice(index, 0, t);
-    setThings([...newArray]);
+    const localUpdate = () => {
+      const newArray = things.filter((i) => i.$id !== t.$id);
+      const index = things.findIndex((i) => i.$id === t.$id);
+      if (index !== -1) newArray.splice(index, 0, t);
+      setThings([newArray]);
+    };
+
     if (t.$id && t.name)
-      itemsServices.updateItem(t.$id, {
-        name: t.name,
-        isSelected: t.isSelected,
-      });
+      try {
+        itemsServices.updateItem(t.$id, {
+          name: t.name,
+          isSelected: t.isSelected,
+        });
+      } catch (e) {
+        console.log("Error, Intenta de nuevo", e);
+        t.isSelected = !t.isSelected!;
+        localUpdate();
+      }
   };
   const deleteItem = (id: string) => {
-    itemsServices.deleteItem(id);
-    const newArray = things.filter((i) => i.$id !== id);
-    setThings(newArray);
+    try {
+      itemsServices.deleteItem(id);
+      const newArray = things.filter((i) => i.$id !== id);
+      setThings(newArray);
+    } catch (e) {
+      console.log("Error, no pudo ser eliminado -> Intente nuevamente");
+    }
   };
   return (
     <div className="itemsPage">
@@ -65,7 +84,10 @@ export function Items() {
       </div>
       <ul>
         {things.map((t) => (
-          <div className={`newItem ${t.isSelected ? "checked" : "notChecked"}`}>
+          <div
+            key={t.$id}
+            className={`newItem ${t.isSelected ? "checked" : "notChecked"}`}
+          >
             <button
               onClick={() => {
                 updateItem(t);
@@ -77,8 +99,6 @@ export function Items() {
             <li>{t.name}</li>
             <button
               onClick={() => {
-                console.log(t);
-                console.log(t.$id);
                 if (t.$id) deleteItem(t.$id);
               }}
             >

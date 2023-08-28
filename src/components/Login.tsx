@@ -7,17 +7,17 @@ export function Login() {
   const [message, setMessage] = useState("");
   const sendEmail = (email: string) => {
     const $id = uuidv4();
-    try {
-      createMagicLink($id, email).then(() => {
+    createMagicLink($id, email)
+      .then(() => {
         setMessage("Enviado Correctamente");
+        setEmailInput("");
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
+      })
+      .catch(() => {
+        setMessage("Error al enviar, Intenta nuevamente");
       });
-      setEmailInput("");
-      setTimeout(() => {
-        setMessage("");
-      }, 2000);
-    } catch (error) {
-      setMessage("Error al enviar, Intenta nuevamente");
-    }
   };
   return (
     <div>
