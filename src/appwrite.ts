@@ -14,7 +14,7 @@ export const createMagicLink = async (id: string, email: string) => {
     await account.createMagicURLSession(
       id,
       email,
-      import.meta.env.MAGIC_LINK_URL
+      import.meta.env.VITE_MAGIC_LINK_URL
     );
   } catch (error) {
     console.log(error);
