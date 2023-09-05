@@ -48,17 +48,14 @@ export function Items() {
 
     if (t.$id && t.name)
       try {
-        console.log("Funciona,AQUI ESTOY ");
         itemsServices.updateItem(t.$id, {
           name: t.name,
           isSelected: t.isSelected || false,
         });
-        console.log(t.isSelected);
       } catch (e) {
         console.log("Error, Intenta de nuevo", e);
         localUpdate();
       }
-    else console.log("No encunetor o Id o Name Name:", t.name);
   };
   const deleteItem = (id: string) => {
     try {
@@ -116,54 +113,3 @@ export function Items() {
     </div>
   );
 }
-// <li
-//   key={t.$id}
-//   className={`newItem   ${t.isSelected ? "checked" : "notChecked"}`}
-// >
-//   <p className="heading6 itemName">{t.name}</p>
-//   {t.isSelected ? (
-//     <TrashIcon
-//       onClick={() => {
-//         if (t.$id) deleteItem(t.$id);
-//       }}
-//     />
-//   ) : (
-//     <EditIcon
-//       onClick={() => {
-//         setEdit(true);
-//       }}
-//     />
-//   )}
-
-//   {t.isSelected ? (
-//     <CheckSquareIcon
-//       onClick={() => {
-//         updateItem({
-//           ...t,
-//           isSelected: !t.isSelected,
-//         });
-//       }}
-//     />
-//   ) : (
-//     <CheckIcon
-//       onClick={() => {
-//         updateItem({
-//           ...t,
-//           isSelected: !t.isSelected,
-//         });
-//       }}
-//     />
-//   )}
-//   <hr className="line"></hr>
-//   {edit && (
-//     <input
-//       type="text"
-//       maxLength={50}
-//       value={input}
-//       onChange={(e) => {
-//         t.name = e.target.value;
-//       }}
-//       className="heading6"
-//     />
-//   )}
-// </li>
