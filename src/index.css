@@ -12,6 +12,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --primary-00: #ebd6ca;
+  --primary-10: #dd9e8d;
+  --primary-40: #b8908b;
+  --primary-60: #e6d4d2;
+  --neutral-00: #ffffff;
+  --neutral-10: #e6e6e6;
+  --neutral-40: #9a9a9a;
+  --neutral-60: #b7b7b7;
+  --neutral-80: #282828;
+  --text-00: #31405d;
+  --icon-00: #0d000d;
+  --icon-10: #2e3b53;
+  --icon-11: #2e3b53;
 }
 
 a {
