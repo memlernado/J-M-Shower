@@ -7,21 +7,6 @@ import { ReactComponent as Icon } from "./assets/undraw_completed_tasks.svg";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  useEffect(() => {
-    document.body.classList.add("ligthMode");
-    document.body.classList.remove("darkMode");
-  }, []);
-  const changeDarkMode = () => {
-    if (darkMode) {
-      console.log("Deberia cambiar");
-      document.body.classList.add("darkMode");
-      document.body.classList.remove("ligthMode");
-    } else {
-      document.body.classList.add("ligthMode");
-      document.body.classList.remove("darkMode");
-    }
-    console.log(darkMode);
-  };
   return (
     <div>
       {darkMode ? (
@@ -30,7 +15,6 @@ function App() {
           onClick={() => {
             document.body.classList.add("ligthMode");
             document.body.classList.remove("darkMode");
-
             setDarkMode(false);
           }}
         />
