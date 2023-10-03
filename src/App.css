@@ -54,6 +54,7 @@ form {
   }
   .heading6 {
     background: #3f405d;
+    color: #ffffff;
   }
   input:focus {
     outline: #3f405d;
@@ -87,8 +88,10 @@ form {
   position: relative;
   text-align: center;
   .elipse1 {
-    top: -3px;
-    right: 270px;
+    top: -73px;
+    right: 374px;
+    height: 86.47px;
+    width: 88.94px;
   }
   .elipse2 {
     width: 106.897px;
@@ -105,8 +108,6 @@ h1 {
   position: inherit;
 }
 .elipse1 {
-  width: 61.82px;
-  height: 59.827px;
   position: absolute;
   top: 2px;
   right: 305px;

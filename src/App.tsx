@@ -1,21 +1,26 @@
 import "./App.css";
 import { Items } from "./components/items";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as Sun } from "./assets/sun.svg";
 import { ReactComponent as Moon } from "./assets/moon.svg";
 import { ReactComponent as Icon } from "./assets/undraw_completed_tasks.svg";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    document.body.classList.add("ligthMode");
+    document.body.classList.remove("darkMode");
+  }, []);
   const changeDarkMode = () => {
-    setDarkMode(!darkMode);
     if (darkMode) {
+      console.log("Deberia cambiar");
       document.body.classList.add("darkMode");
       document.body.classList.remove("ligthMode");
     } else {
       document.body.classList.add("ligthMode");
       document.body.classList.remove("darkMode");
     }
+    console.log(darkMode);
   };
   return (
     <div>
@@ -23,14 +28,19 @@ function App() {
         <Moon
           className="modeIcon"
           onClick={() => {
-            changeDarkMode();
+            document.body.classList.add("ligthMode");
+            document.body.classList.remove("darkMode");
+
+            setDarkMode(false);
           }}
         />
       ) : (
         <Sun
           className="modeIcon"
           onClick={() => {
-            changeDarkMode();
+            document.body.classList.add("darkMode");
+            document.body.classList.remove("ligthMode");
+            setDarkMode(true);
           }}
         />
       )}
