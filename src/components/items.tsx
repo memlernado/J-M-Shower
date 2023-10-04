@@ -36,13 +36,13 @@ export function Items() {
     }
   };
   const updateItem = (t: Partial<TItemDocument>) => {
-    const localUpdate = () => {
-      const newArray = things.filter((i) => i.$id !== t.$id);
-      const index = things.findIndex((i) => i.$id === t.$id);
-      if (index !== -1) newArray.splice(index, 0, t);
-      setThings(newArray);
-    };
-    localUpdate();
+    const oldItem = things.find((i) => {
+      i.$id === t.$id;
+    });
+    const newArray = things.filter((i) => i.$id !== t.$id);
+    const index = things.findIndex((i) => i.$id === t.$id);
+    if (index !== -1) newArray.splice(index, 0, t);
+    setThings(newArray);
 
     if (t.$id && t.name)
       try {
@@ -52,7 +52,10 @@ export function Items() {
         });
       } catch (e) {
         console.log("Error, Intenta de nuevo", e);
-        localUpdate();
+        const newArray = things.filter((i) => i.$id !== t.$id);
+        const index = things.findIndex((i) => i.$id === t.$id);
+        if (index !== -1 && oldItem) newArray.splice(index, 0, oldItem);
+        setThings(newArray);
       }
   };
   const deleteItem = (id: string) => {
@@ -104,7 +107,7 @@ export function Items() {
             }}
             t={t}
             key={t.$id}
-          ></Item>
+          />
         ))}
       </ul>
     </div>

@@ -13,7 +13,7 @@ type ItemProps = {
 };
 
 export function Item({ deleteItem, updateItem, t }: ItemProps) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(() => t.name ?? "");
   const [isEditing, setIsEditing] = useState(false);
 
   return (

@@ -10,19 +10,24 @@ export function Login() {
   const [emailInput, setEmailInput] = useState("");
   const [message, setMessage] = useState("");
   const sendEmail = (email: string) => {
+    const timeout = setTimeout(() => {
+      setMessage("");
+    }, 2000);
     const $id = uuidv4();
-    createMagicLink($id, email).then(
-      () => {
-        setMessage("Enviado Correctamente");
-        setEmailInput("");
-        setTimeout(() => {
-          setMessage("");
-        }, 2000);
-      },
-      () => {
-        setMessage("Error al enviar, Intenta nuevamente");
-      }
-    );
+    createMagicLink($id, email)
+      .then(
+        () => {
+          setMessage("Enviado Correctamente");
+          setEmailInput("");
+          timeout;
+        },
+        () => {
+          setMessage("Error al enviar, Intenta nuevamente");
+        }
+      )
+      .finally(() => {
+        clearTimeout(timeout);
+      });
   };
   return (
     <div className="login">

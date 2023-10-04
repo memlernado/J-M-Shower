@@ -1,6 +1,6 @@
 import "./App.css";
 import { Items } from "./components/items";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ReactComponent as Sun } from "./assets/sun.svg";
 import { ReactComponent as Moon } from "./assets/moon.svg";
 import { ReactComponent as Icon } from "./assets/undraw_completed_tasks.svg";
