@@ -1,15 +1,38 @@
 #root {
-  max-width: 1280px;
+  max-width: 1512px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   display: flex;
   justify-content: center;
 }
+
+.login {
+  position: relative;
+}
+.loginText {
+  color: #000;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  width: 338px;
+  height: 30px;
+}
+.checkIcon {
+  margin-bottom: -6px;
+  margin-right: 5px;
+  stroke: #9a9a9a;
+  width: 27px;
+  height: 21px;
+}
+.loginIcon {
+  position: absolute;
+  right: -44px;
+  top: 250px;
+}
 form {
   display: contents;
 }
-.sunIcon {
+.modeIcon {
+
   position: fixed;
   right: 44px;
   top: 22px;
@@ -23,35 +46,87 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
   padding: 25px;
-  border-radius: 10px;
-  max-width: 380px;
+  max-width: 400px;
+}
+.darkMode {
+  background-color: #3f405d;
+  .itemName {
+    color: #ffffff;
+  }
+  .heading6 {
+    background: #3f405d;
+    color: #ffffff;
+  }
+  input:focus {
+    outline: #3f405d;
+  }
+}
+.ligthMode {
+  background-color: #ffffff;
+  .heading6 {
+    background: #ffffff;
+  }
+  input:focus {
+    outline: #ffffff;
+  }
+
 }
 .title {
   position: relative;
   text-align: center;
-  text-transform: uppercase;
+
+}
+.titleText {
+  z-index: 3;
   letter-spacing: 1px;
   font-family: Be Vietnam Pro;
-  font-size: 10px;
+  font-size: 65px;
   font-style: italic;
-  font-weight: 800;
-  line-height: 40px; /* 102.564% */
+  font-weight: 900;
+  line-height: 40px;
+  color: #000;
+}
+.loginTitle {
+  color: #000;
+  position: relative;
+  text-align: center;
+  .elipse1 {
+    top: -73px;
+    right: 374px;
+    height: 86.47px;
+    width: 88.94px;
+  }
+  .elipse2 {
+    width: 106.897px;
+    height: 99.075px;
+    position: absolute;
+    top: -55px;
+    right: 339px;
+  }
+  .heading1 {
+    z-index: 3;
+  }
+
 }
 h1 {
   position: inherit;
 }
 .elipse1 {
   position: absolute;
-  top: -7px;
-  right: 298px;
+
+  top: 2px;
+  right: 305px;
+
   z-index: 2;
 }
 .elipse2 {
   position: absolute;
-  top: 1px;
-  right: 282px;
+
+  top: 12px;
+  right: 284px;
+
 }
 ul {
   list-style-type: none;
@@ -61,12 +136,35 @@ ul {
 
 .inputsField {
   display: grid;
-  grid-template-columns: 0.5fr 0.6fr;
+  grid-template-columns: 0.5fr 1.6fr;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   max-width: 100%;
   margin: 8px;
   padding: 8px;
+}
+.inputLoginField {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  width: 296px;
+  margin-left: 48px;
+  border-top: 1px solid var(--neutral-10, #e6e6e6);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: var(--neutral-60, #b7b7b7);
+
+  /* 400% */
+}
+.emailInput {
+  max-width: 78%;
+  padding-left: 10px;
+  max-width: 80%;
+  font-family: Be Vietnam Pro;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 100;
+  line-height: 40px;
 }
 input {
   flex-grow: 2;
@@ -87,10 +185,16 @@ input {
   cursor: pointer;
   outline: inherit;
 }
-button:focus,
+button[type="submit"]:focus,
+svg:focus,
 input:focus {
   outline: none;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+}
+
 .newItem {
   box-sizing: border-box;
   max-width: 100%;
@@ -106,6 +210,26 @@ input:focus {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
+.heading1 {
+  color: #000;
+  font-family: Be Vietnam Pro;
+  font-size: 100px;
+  font-style: italic;
+  font-weight: 950;
+  line-height: 40px;
+}
+.heading4 {
+  /* Heading 4 */
+  font-family: Be Vietnam Pro;
+  font-size: 25px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 40px; /* 160% */
+  width: 348px;
+  margin-top: -32px;
+  margin-left: 23px;
+}
+
 .heading6 {
   font-family: Be Vietnam Pro;
   font-size: 15px;
@@ -120,11 +244,16 @@ input:focus {
   padding-left: 3px;
   margin: 0px;
   height: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .line {
   width: 282.002px;
-  height: 0px;
+  height: -1px;
   margin-top: 0px;
+  border-color: var(--neutral-10);
+
 }
 .checked {
   background: var(--neutral-40, #9a9a9a);
@@ -136,6 +265,5 @@ input:focus {
   .itemName {
     background-color: var(--neutral-40, #9a9a9a);
   }
-}
-.notChecked {
+
 }
