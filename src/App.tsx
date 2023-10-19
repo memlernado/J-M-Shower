@@ -28,6 +28,7 @@ function App() {
           }}
         />
       )}
+
       <Items />
       <Icon className="taskIcon" />
     </div>

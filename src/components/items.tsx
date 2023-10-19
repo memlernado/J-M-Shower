@@ -10,7 +10,6 @@ import { Item } from "./item";
 export function Items() {
   const [input, setInput] = useState("");
   const [things, setThings] = useState<Partial<TItemDocument>[]>([]);
-
   const fetchItems = () =>
     itemsServices.listItems().then((res) => {
       setThings(res);
@@ -56,6 +55,7 @@ export function Items() {
         const index = things.findIndex((i) => i.$id === t.$id);
         if (index !== -1 && oldItem) newArray.splice(index, 0, oldItem);
         setThings(newArray);
+
       }
   };
   const deleteItem = (id: string) => {
